@@ -2,8 +2,9 @@ import styled from '@emotion/styled';
 
 export const ContactItem = styled.li`
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 `;
 
 export const ContactName = styled.p`
@@ -12,12 +13,15 @@ export const ContactName = styled.p`
 `;
 
 export const ContactNumber = styled.span`
-  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 export const Button = styled.button`
-  margin: 8px;
-  padding: 4px 14px;
-  border-radius: 5px;
-  cursor: pointer;
+  margin-left: 20px;  
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid;
+    :hover {
+    background-color: #e0e0e0;
+    }
 `;
