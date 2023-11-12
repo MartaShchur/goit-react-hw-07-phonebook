@@ -14,6 +14,8 @@ export const ContactList = () =>  {
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
 
+  // console.log(filteredContacts);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

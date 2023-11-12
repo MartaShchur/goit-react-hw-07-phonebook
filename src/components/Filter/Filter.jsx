@@ -7,6 +7,8 @@ export const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
 
+  // console.log(filter);
+
   const handleFilterChange = event => {
     dispatch(setFilter(event.target.value.trim()));
   };
