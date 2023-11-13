@@ -27,8 +27,12 @@ export const ContactForm = () => {
       return;
     }
 
-    const isContactExist = contacts.find(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
+    // const isContactExist = contacts.some(
+    //   ({contact}) => contact.name.toLowerCase() === name.toLowerCase()
+    // );
+
+    const isContactExist = contacts.items.some(
+      contact => contact.name.items.toLowerCase() === name.toLowerCase()
     );
 
     if (isContactExist) {
@@ -40,7 +44,7 @@ export const ContactForm = () => {
       return;
     }
 
-    const isNumberExist = contacts.find(
+    const isNumberExist = contacts.items.some(
       contact => contact.number.replace(/\D/g, '') === number.replace(/\D/g, '')
     );
 
@@ -57,6 +61,8 @@ export const ContactForm = () => {
     setName('');
     setNumber('');
   };
+
+
   return (
     <Form onSubmit={handleSubmit} autoComplete="off" >
       <Label>
