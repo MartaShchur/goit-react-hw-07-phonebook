@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 // import PropTypes from 'prop-types';
-import { deleteContact } from 'redux/operations';
+import { deleteContacts } from 'redux/operations';
 import {
   ContactItem,
   ContactName,
@@ -12,7 +12,7 @@ export const ContactsListItem = ({ contact }) => {
   const dispatch = useDispatch();
 
   const handleDeleteContact = () => {
-    dispatch(deleteContact(contact.id));
+    dispatch(deleteContacts(contact.id));
   };
 
   return (

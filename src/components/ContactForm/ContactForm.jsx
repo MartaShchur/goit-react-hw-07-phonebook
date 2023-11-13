@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Notiflix from 'notiflix';
-import { addContact } from 'redux/operations';
+// import Notiflix from 'notiflix';
+import { addContacts } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
 import { Form, Label, Button, Input } from './ContactForm.styled';
 
@@ -12,54 +12,63 @@ export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    // if (name.trim() === '' || number.trim() === '') {
+    //   return;
+    // }
+
+    const isContactExist = contacts.find(
+       contact  => contact.name.toLowerCase().trim() === name.toLowerCase().trim()
+    );
+
+    console.log(number);
+    console.log(name);
+    console.log(contacts);
+
+
+    if (isContactExist) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
+
+    const isNumberExist = contacts.find(
+       contact  => contact.number.toLowerCase().trim() === number.toLowerCase().trim()
+    );
+
+    if (isNumberExist) {
+      alert(`${number} is already in contacts`);
+      return;
+    }
+
+
+    // const isNumberExist = contacts.find(
+    //   contact => contact.number.replace(/\D/g, '') === number.replace(/\D/g, '')
+    // );
+
+    // // console.log(isNumberExist);
+
+    // if (isNumberExist) {
+    //   Notiflix.Report.warning(
+    //     'Alert',
+    //     `Number ${number} is already in contacts!`,
+    //     'Ok'
+    //   );
+    //   return;
+    // }
+
+    dispatch(addContacts(name, number));
+    setName('');
+    setNumber('');
+  };
+
   const handleNameChange = event => {
     setName(event.target.value);
   };
 
   const handleNumberChange = event => {
     setNumber(event.target.value);
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    if (name.trim() === '' || number.trim() === '') {
-      return;
-    }
-
-    // const isContactExist = contacts.some(
-    //   ({contact}) => contact.name.toLowerCase() === name.toLowerCase()
-    // );
-
-    const isContactExist = contacts.items.some(
-      contact => contact.name.items.toLowerCase() === name.toLowerCase()
-    );
-
-    if (isContactExist) {
-      Notiflix.Report.warning(
-        'Alert',
-        `Contact with name ${name} already exists!`,
-        'Ok'
-      );
-      return;
-    }
-
-    const isNumberExist = contacts.items.some(
-      contact => contact.number.replace(/\D/g, '') === number.replace(/\D/g, '')
-    );
-
-    if (isNumberExist) {
-      Notiflix.Report.warning(
-        'Alert',
-        `Number ${number} is already in contacts!`,
-        'Ok'
-      );
-      return;
-    }
-
-    dispatch(addContact(name, number));
-    setName('');
-    setNumber('');
   };
 
 
@@ -79,7 +88,6 @@ export const ContactForm = () => {
         onChange={handleNameChange}   
         />
 
-      
       <Label>
         Number
         </Label>
