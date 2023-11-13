@@ -10,7 +10,7 @@ export const ContactForm = () => {
   const contacts = useSelector(selectContacts);
   // console.log(contacts);
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -23,8 +23,8 @@ export const ContactForm = () => {
        contact  => contact.name.toLowerCase().trim() === name.toLowerCase().trim()
     );
 
-    console.log(number);
-    console.log(name);
+    // console.log(number);
+    // console.log(name);
     console.log(contacts);
 
 
@@ -34,11 +34,11 @@ export const ContactForm = () => {
     }
 
     const isNumberExist = contacts.find(
-       contact  => contact.number.toLowerCase().trim() === number.toLowerCase().trim()
+       contact  => contact.phone.toLowerCase().trim() === phone.toLowerCase().trim()
     );
 
     if (isNumberExist) {
-      alert(`${number} is already in contacts`);
+      alert(`${phone} is already in contacts`);
       return;
     }
 
@@ -58,17 +58,17 @@ export const ContactForm = () => {
     //   return;
     // }
 
-    dispatch(addContacts(name, number));
+    dispatch(addContacts(name, phone));
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   const handleNameChange = event => {
     setName(event.target.value);
   };
 
-  const handleNumberChange = event => {
-    setNumber(event.target.value);
+  const handlePhoneChange = event => {
+    setPhone(event.target.value);
   };
 
 
@@ -93,13 +93,13 @@ export const ContactForm = () => {
         </Label>
         <Input
           type="tel"
-          name="number"
+          name="phone"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           placeholder="Enter number"
-           value={number}
-        onChange={handleNumberChange}
+           value={phone}
+        onChange={handlePhoneChange}
         />
       
       <Button type="submit">Add contact</Button>

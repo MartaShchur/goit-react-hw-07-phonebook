@@ -13,9 +13,6 @@ export const ContactList = () =>  {
   const filteredContacts = useSelector(selectFilteredContacts);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
-
-  // console.log(filteredContacts);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,8 +26,8 @@ export const ContactList = () =>  {
       ) : filteredContacts.length === 0 && !error ? (
         <p>The Phonebook is empty. Add your first contact.</p>
       ) : (
-        filteredContacts.map(({ id, name, number }) => (
-          <ContactsListItem key={id} contact={{ id, name, number }} />
+        filteredContacts.map(({ id, name, phone }) => (
+          <ContactsListItem key={id} contact={{ id, name, phone }} />
         ))
       )}
     </ul>

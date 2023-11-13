@@ -4,7 +4,7 @@ import { deleteContacts } from 'redux/operations';
 import {
   ContactItem,
   ContactName,
-  ContactNumber,
+  ContactPhone,
   Button,
 } from './ContactListItem.styled';
 
@@ -18,7 +18,7 @@ export const ContactsListItem = ({ contact }) => {
   return (
     <ContactItem>
       <ContactName>
-        {contact.name}:<ContactNumber>{contact.number}</ContactNumber>
+        {contact.name}:<ContactPhone>{contact.phone}</ContactPhone>
       </ContactName>
       <Button onClick={handleDeleteContact}>Delete</Button>
     </ContactItem>
