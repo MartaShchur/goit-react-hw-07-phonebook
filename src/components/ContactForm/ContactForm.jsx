@@ -47,28 +47,28 @@ export const ContactForm = () => {
     setPhone('');
   };
 
-  const handleChange = event => {
-    const { name, value } = event.target;
+  // const handleChange = event => {
+  //   const { name, value } = event.target;
 
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'number':
-        setPhone(value);
-        break;
-      default:
-        return;
-    }
+  //   switch (name) {
+  //     case 'name':
+  //       setName(value);
+  //       break;
+  //     case 'number':
+  //       setPhone(value);
+  //       break;
+  //     default:
+  //       return;
+  //   }
+  // };
+
+  const handleNameChange = event => {
+    setName(event.target.value);
   };
 
-  // const handleNameChange = event => {
-  //   setName(event.target.value);
-  // };
-
-  // const handlePhoneChange = event => {
-  //   setPhone(event.target.value);
-  // };
+  const handlePhoneChange = event => {
+    setPhone(event.target.value);
+  };
 
 
   return (
@@ -84,7 +84,7 @@ export const ContactForm = () => {
           required
           // placeholder="Enter name"
           value={name}
-        onChange={handleChange}   
+        onChange={handleNameChange}   
         />
 
       <Label>
@@ -98,7 +98,7 @@ export const ContactForm = () => {
           required
           placeholder="Enter number"
            value={phone}
-        onChange={handleChange}
+        onChange={handlePhoneChange}
         />
       
       <Button type="submit">Add contact</Button>
